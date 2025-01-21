@@ -1,6 +1,6 @@
 import ProductCard from "@/components/products-ui/product-card";
 import { Button } from "@/components/ui/button";
-import { client } from "@/lib/client";
+import { client } from "@/sanity/lib/client";
 import React from "react";
 
 interface Products {

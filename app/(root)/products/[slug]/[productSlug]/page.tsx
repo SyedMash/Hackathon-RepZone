@@ -3,8 +3,8 @@ import CustomerSatisfaction from "@/components/product-page/customer-satis";
 import ProductSlide from "@/components/product-page/product-slide";
 import ProductCard from "@/components/products-ui/product-card";
 import { Card } from "@/components/ui/card";
-import { client } from "@/lib/client";
-import { urlFor } from "@/lib/image";
+import { client } from "@/sanity/lib/client";
+import { urlFor } from "@/sanity/lib/image";
 import React from "react";
 
 interface Product {

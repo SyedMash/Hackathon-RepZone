@@ -1,5 +1,5 @@
 import ProfilePage from "@/components/profile";
-import { client } from "@/lib/client";
+import { client } from "@/sanity/lib/client";
 import { auth } from "@clerk/nextjs/server";
 import React from "react";
 

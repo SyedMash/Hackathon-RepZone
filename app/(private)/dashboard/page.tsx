@@ -5,7 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { client } from "@/lib/client";
+import { client } from "@/sanity/lib/client";
 
 import {
   DollarSign,

@@ -1,5 +1,5 @@
 import Cart from "@/components/cart";
-import { client } from "@/lib/client";
+import { client } from "@/sanity/lib/client";
 import { auth } from "@clerk/nextjs/server";
 import React from "react";
 

@@ -2,7 +2,7 @@ import React from "react";
 
 //components imports
 import ProductCard from "@/components/products-ui/product-card";
-import { client } from "@/lib/client";
+import { client } from "@/sanity/lib/client";
 
 interface ProductData {
   name: string;

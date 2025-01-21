@@ -1,7 +1,7 @@
 import { generateKey } from "@/constants";
 import { ship } from "@/lib/ship-engine";
 import { stripe } from "@/lib/stripe";
-import { client } from "@/lib/client";
+import { client } from "@/sanity/lib/client";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {

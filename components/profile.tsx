@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
-import { client } from "@/lib/client";
+import { client } from "@/sanity/lib/client";
 import { useRouter } from "next/navigation";
 
 const shippingSchema = z.object({

@@ -10,7 +10,7 @@ import "swiper/css/pagination";
 // import required modules
 import { Pagination } from "swiper/modules";
 import Image from "next/image";
-import { urlFor } from "@/lib/image";
+import { urlFor } from "@/sanity/lib/image";
 
 export default function ProductSlide({ images }: { images: any[] }) {
   return (

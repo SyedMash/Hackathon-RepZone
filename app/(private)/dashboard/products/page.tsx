@@ -19,7 +19,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import { client } from "@/lib/client";
+import { client } from "@/sanity/lib/client";
 
 import { PlusCircle } from "lucide-react";
 import Link from "next/link";
