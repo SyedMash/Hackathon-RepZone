@@ -9,8 +9,8 @@ import {
 } from "@radix-ui/react-accordion";
 import ProductSlide from "./product-slide";
 import Image from "next/image";
-import { urlFor } from "@/sanity/lib/image";
-import { client } from "@/sanity/lib/client";
+import { urlFor } from "../../sanity/lib/image";
+import { client } from "../../sanity/lib/client";
 import { Card } from "../ui/card";
 import { ChevronLeft } from "lucide-react";
 import { Button } from "../ui/button";

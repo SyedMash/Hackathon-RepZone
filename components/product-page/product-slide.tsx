@@ -10,7 +10,7 @@ import "swiper/css/pagination";
 // import required modules
 import { Pagination } from "swiper/modules";
 import Image from "next/image";
-import { urlFor } from "@/sanity/lib/image";
+import { urlFor } from "../../sanity/lib/image";
 
 export default function ProductSlide({ images }: { images: any[] }) {
   return (
@@ -38,8 +38,11 @@ export default function ProductSlide({ images }: { images: any[] }) {
         modules={[Pagination]}
         className="mySwiper h-full w-full"
       >
-        {images.map((image, idx:number) => (
-          <SwiperSlide key={idx} className="h-full rounded-xl overflow-hidden cursor-grab active:cursor-grabbing">
+        {images.map((image, idx: number) => (
+          <SwiperSlide
+            key={idx}
+            className="h-full rounded-xl overflow-hidden cursor-grab active:cursor-grabbing"
+          >
             <Image
               src={urlFor(image).url()}
               alt="name"
