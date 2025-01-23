@@ -26,8 +26,8 @@ const ProductCard = ({
 }: ProductData) => {
   return (
     <>
-      <Card className=" p-3 space-y-1 rounded-lg shadow-none border-black/10 cursor-pointer hover:scale-105 transition-all duration-300 group">
-        <div className="h-96 rounded-lg bg-gray-100 group-hover:scale-95 transition-all duration-300">
+      <Card className="p-3 space-y-1 rounded-lg shadow-none border-black/10 cursor-pointer hover:scale-105 transition-all duration-300 group">
+        <div className="h-96 rounded-lg  bg-gray-100 group-hover:scale-95 transition-all duration-300">
           <Image
             src={imageUrl || ""}
             alt="image"
