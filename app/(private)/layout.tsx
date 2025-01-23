@@ -1,6 +1,5 @@
 "use client";
 
-
 import "../globals.css";
 import DashboardNavbar from "@/components/dashboard/dashboard-navbar";
 import { useClerk, useUser } from "@clerk/nextjs";
@@ -21,18 +20,18 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   }
 
   if (!Array.isArray(user.emailAddresses) || user.emailAddresses.length === 0) {
-    console.log("Email addresses are not defined or empty");
+    // console.log("Email addresses are not defined or empty");
     return signOut({ redirectUrl: "/" });
   }
 
-  if (user.emailAddresses[0].emailAddress !== "technologistpro7@gmail.com") {
-    console.log("Email address does not match");
+  if (user.emailAddresses[0].emailAddress !== "mhthenoob18@gmail.com") {
+    // console.log("Email address does not match");
     return signOut({ redirectUrl: "/" });
   }
 
   if (
     !user ||
-    user.emailAddresses[0].emailAddress !== "technologistpro7@gmail.com"
+    user.emailAddresses[0].emailAddress !== "mhthenoob18@gmail.com"
   ) {
     return signOut({ redirectUrl: "/" });
   }
