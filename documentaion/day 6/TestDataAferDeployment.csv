@@ -1,0 +1,9 @@
+Test Case ID,Description,Steps,Expected Result,Actual Result,Status,Remarks
+TC001,Validate Product Listing,homePage>categoryPage,Product display,Product displayed,Passed,No issue found
+TC002,Create and store new user if not already exist in sanity data base,homePage>categoryPage,Create new user,Created new user,passed,No issue found
+TC003,Add to cart functionality,homepage>productpage>add-to-cart button,product add to cart,producted successfuly added to cart,passed,No issue found
+TC004,Payment functionality,homepage>productpage>add-to-cart button>cart>shipping>checkout,stripe check out page display with cart items,Successfully displayed stripe checkout page,passed,No issue found
+TC005,Create order in sanity database,checkout>enter details>pay,successful payment and create order in database with product details,successfuly created order and store in sanity database,passed,No issue found
+TC006,Only admin can access dashboard (specific email),/dashboard>authorization,logut and redirect to home page if not admin,succuessfuly redirecting and loging out,passed,No issue found
+TC007,Responsive layout,resize window>broswer>all functionalty,layout adjust properly with all working functionality,layout adjusted properly with all working functionality,passed,No issue found
+TC007,"middleware working, private route","/dashboard, /cart, /profile",middleware blocking access to private route without logging in,middleware succuessfuly blocked accesing private routes,passed,No issue found
