@@ -4,6 +4,8 @@ import Footer from "@/components/footer";
 import NewLetter from "@/components/Home/news-letter";
 import { useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
+import Header from "@/components/Header";
+import BackToTop from "@/components/back-to-top";
 
 export default function RootLayout({
   children,
@@ -22,11 +24,12 @@ export default function RootLayout({
       });
     }
   }, [user, isSignedIn]);
-
   return (
     <>
+      <Header />
       <Navbar />
       {children}
+      <BackToTop />
       <NewLetter />
       <Footer />
     </>

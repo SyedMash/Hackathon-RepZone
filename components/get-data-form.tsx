@@ -66,7 +66,7 @@ const GetDataForm = ({
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(handleSubmit)}
-          className="h-full lg:min-h-[30vh] flex flex-col gap-5"
+          className="flex flex-col gap-5"
         >
           <div className="space-y-6">
             <FormField
@@ -130,14 +130,17 @@ const GetDataForm = ({
               >
                 <span className="h-12 w-12">-</span>
               </Button>
-              <Button type="button" className="w-full">
+              <Button
+                type="button"
+                className="w-full rounded-full bg-[#466e74]"
+              >
                 {count} / {stock}
               </Button>
               <Button
                 type="button"
                 asChild
                 size={"icon"}
-                className="cursor-pointer"
+                className="cursor-pointer "
                 onClick={() => {
                   setCount((prev) => {
                     if (count < Number(stock)) {
@@ -151,7 +154,10 @@ const GetDataForm = ({
               </Button>
             </div>
             <div className="flex gap-2">
-              <Button type="submit" className="w-full">
+              <Button
+                type="submit"
+                className="w-full rounded-full bg-[#466e74] animate-pulse"
+              >
                 ADD TO CART
               </Button>
             </div>

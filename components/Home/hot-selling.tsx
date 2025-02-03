@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 
 //components imports
@@ -12,7 +13,6 @@ import "swiper/css/pagination";
 
 // import required modules
 import { Pagination } from "swiper/modules";
-import { ChevronRight } from "lucide-react";
 
 interface ProductData {
   name: string;
@@ -29,14 +29,11 @@ const NewArrivals = ({ products }: { products: ProductData[] }) => {
 
   return (
     <>
-      <div className="overflow-hidden px-2 mx-auto 2xl:max-w-[1800px]">
-        <div className="flex justify-between items-end mt-12 mb-6">
-          <h1 className="flex flex-col text-xl md:text-2xl lg:text-3xl">
-            NEW ARRIVAL
+      <div className="overflow-hidden px-2 mx-auto 2xl:max-w-[1800px] mb-24">
+        <div className="">
+          <h1 className="text-center flex flex-col gap-2 text-xl md:text-2xl lg:text-3xl font-bold my-12 text-muted-foreground">
+            HOT SELLING
           </h1>
-          <span className="text-base">
-            <ChevronRight className="h-8 w-8 animate-pulse" />
-          </span>
         </div>
         <Swiper
           slidesPerView={1}
@@ -59,7 +56,7 @@ const NewArrivals = ({ products }: { products: ProductData[] }) => {
             },
             1280: {
               slidesPerView: 4,
-              spaceBetween: 10,
+              spaceBetween: 30,
             },
           }}
           // modules={[Pagination]}

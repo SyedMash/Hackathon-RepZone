@@ -68,12 +68,12 @@ const Slider = () => {
             className="h-full w-full lg:bg-[url(/images/pc/4.jpg)] xl:bg-[url(/images/pc/s1.jpg)] bg-no-repeat bg-cover bg-center absolute -top-full"
             ref={imgRefOne}
           >
-            <Link
+            {/* <Link
               href={"/products/T-shirt"}
               className="absolute z-10 text-white w-full bottom-5 px-2"
             >
               <Button className="w-full">Shop Now</Button>
-            </Link>
+            </Link> */}
           </div>
           <div
             className="h-full w-full bg-[url(/images/mobile/1.jpg)] lg:bg-[url(/images/pc/1.jpg)] xl:bg-[url(/images/pc/w3.jpg)] bg-no-repeat bg-cover bg- absolute"
@@ -93,12 +93,12 @@ const Slider = () => {
             className="h-full w-full bg-[url(/images/mobile/2.jpg)] lg:bg-[url(/images/pc/2.jpg)] xl:bg-[url(/images/pc/w4.jpg)] bg-no-repeat bg-cover bg-top absolute"
             ref={imgRefThree}
           >
-            <Link
+            {/* <Link
               href={"/products/Hoodie"}
               className="absolute z-10 text-white w-full bottom-5 px-2"
             >
               <Button className="w-full">Shop Now</Button>
-            </Link>
+            </Link> */}
           </div>
           <div
             className="h-full w-full lg:bg-[url(/images/pc/3.jpg)] xl:bg-[url(/images/pc/s2.jpg)] bg-no-repeat bg-cover bg-center absolute top-full"

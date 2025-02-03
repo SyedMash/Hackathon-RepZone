@@ -2,10 +2,15 @@ import React from "react";
 import { Card } from "../ui/card";
 import Image from "next/image";
 
-const ReviewCard = () => {
+interface ReviewCardProps {
+  title: string;
+  content: string;
+}
+
+const ReviewCard = ({ title, content }: ReviewCardProps) => {
   return (
-    <Card className="flex gap-2 h-48">
-      <div className="h-full w-48 rounded-lg overflow-hidden">
+    <Card className="flex gap-2 min-h-48 max-w-[600px] overflow-hidden">
+      <div className="h-full w-64 rounded-lg overflow-hidden">
         <Image
           src={"/images/pc/1.jpg"}
           alt="image"
@@ -15,9 +20,9 @@ const ReviewCard = () => {
         />
       </div>
       <div className="space-y-2 p-3">
-        <h1 className="text-xl font-bold">review title</h1>
+        <h1 className="text-xl font-bold">{title}</h1>
         <p>stars</p>
-        <p>content</p>
+        <p className="text-wrap">{content}</p>
       </div>
     </Card>
   );

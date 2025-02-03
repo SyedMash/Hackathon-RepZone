@@ -5,7 +5,12 @@ export default {
   type: "document",
   fields: [
     { name: "name", title: "Name", type: "string" },
-    { name: "description", title: "Description", type: "text" },
+    {
+      name: "description",
+      title: "Description",
+      type: "array",
+      of: [{ type: "block" }],
+    },
     { name: "price", title: "Price", type: "number" },
     { name: "size", title: "Sizes", type: "array", of: [{ type: "string" }] },
     {
@@ -14,14 +19,19 @@ export default {
       type: "array",
       of: [{ type: "string" }],
     },
-    { name: "isNew", title: "IsNew", type: "boolean" },
-    { name: "discountPercent", title: "Discount Percent", type: "number" },
     {
       name: "category",
       title: "Category",
       type: "reference",
       to: [{ type: "category" }],
     },
+    {
+      name: "subcategory",
+      title: "Sub Category",
+      type: "reference",
+      to: [{ type: "subcategory" }],
+    },
+    { name: "discountedPrice", title: "Discounted Price", type: "number" },
     { name: "stock", title: "Stock", type: "number" },
     {
       name: "slug",

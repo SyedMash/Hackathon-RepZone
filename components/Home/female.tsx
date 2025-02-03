@@ -1,18 +1,18 @@
 "use client";
 import React, { useState } from "react";
-
-//components imports
-import ProductCard from "@/components/products-ui/product-card";
+import ProductCard from "../products-ui/product-card";
 import { client } from "@/sanity/lib/client";
+import { Button } from "../ui/button";
+import Link from "next/link";
+import { Libre_Bodoni } from "next/font/google";
 import { Swiper, SwiperSlide } from "swiper/react";
+import CustomButton from "../custom-button/cb";
 
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-
-// import required modules
-import { Pagination } from "swiper/modules";
-import { ChevronRight } from "lucide-react";
+const libre = Libre_Bodoni({
+  style: "normal",
+  subsets: ["latin"],
+  weight: "600",
+});
 
 interface ProductData {
   name: string;
@@ -24,20 +24,27 @@ interface ProductData {
   subCategoryName: string;
   discountedPrice?: string | null;
 }
-const NewArrivals = ({ products }: { products: ProductData[] }) => {
+
+const Male = ({ products }: { products: ProductData[] }) => {
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
 
   return (
     <>
-      <div className="overflow-hidden px-2 mx-auto 2xl:max-w-[1800px]">
-        <div className="flex justify-between items-end mt-12 mb-6">
-          <h1 className="flex flex-col text-xl md:text-2xl lg:text-3xl">
-            NEW ARRIVAL
-          </h1>
-          <span className="text-base">
-            <ChevronRight className="h-8 w-8 animate-pulse" />
-          </span>
+      <section className="my-12">
+        <div className="h-[50vh] relative w-full bg-[url(/images/banners/arc_new_phone_female_banner.jpg)] lg:bg-[url(/images/banners/new_arc_female_banner.png)] bg-no-repeat bg-cover">
+          <div className="absolute bottom-3 left-2 lg:bottom-12 lg:left-12 flex flex-col gap-12">
+            <h1
+              className={`text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-8xl dark:invert ${libre.className}`}
+            >
+              WOMEN COLLECTION
+            </h1>
+            <Link href={"/products/Women"}>
+              <CustomButton />
+            </Link>
+          </div>
         </div>
+      </section>
+      <div className="overflow-hidden px-2 mx-auto 2xl:max-w-[1800px]">
         <Swiper
           slidesPerView={1}
           spaceBetween={10}
@@ -59,11 +66,11 @@ const NewArrivals = ({ products }: { products: ProductData[] }) => {
             },
             1280: {
               slidesPerView: 4,
-              spaceBetween: 10,
+              spaceBetween: 30,
             },
           }}
           // modules={[Pagination]}
-          className="mySwiper h-full w-full"
+          className=" h-full w-full"
         >
           {products.map((product, idx: number) => (
             <SwiperSlide
@@ -80,12 +87,12 @@ const NewArrivals = ({ products }: { products: ProductData[] }) => {
               >
                 <ProductCard
                   name={product.name}
+                  subCategory={product.subCategoryName}
                   description={product.description}
                   images={product.images}
                   category={product.categoryName}
                   price={product.price}
                   slug={product.slug}
-                  subCategory={product.subCategoryName}
                   discountedPrice={product.discountedPrice || null}
                 />
               </div>
@@ -97,4 +104,4 @@ const NewArrivals = ({ products }: { products: ProductData[] }) => {
   );
 };
 
-export default NewArrivals;
+export default Male;

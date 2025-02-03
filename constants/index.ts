@@ -1,43 +1,46 @@
-export const navLinks = [
+export const navLinksMen = [
   {
-    name: "Home",
-    href: "/",
-    bgImage: "/images/pc/12.jpg",
-    description: "Home sweet home for freaks",
-  },
-  {
-    name: "Jeans",
-    href: "/products/Jeans",
+    name: "Compression Shirt",
+    href: "/mens/compression-shirt",
     bgImage: "/images/pc/10.jpg",
-    description: "Jeans collection",
+    description: "Compression shit collections",
   },
   {
-    name: "Hoodie",
-    href: "/products/Hoodie",
+    name: "Shorts",
+    href: "/mens/shorts",
     bgImage: "/images/pc/1.jpg",
-    description: "Women collection",
+    description: "Shorts Collection",
   },
   {
-    name: "T-shirt",
-    href: "/products/T-shirt",
+    name: "Tank Tops",
+    href: "/mens/tank-tops",
     bgImage: "/images/pc/9.jpg",
-    description: "T-shirt collection",
+    description: "Tank Tops collection",
+  },
+];
+
+export const navLinksWomen = [
+  {
+    name: "Compression Shirt",
+    href: "/women/compression-shirt",
+    bgImage: "/images/pc/10.jpg",
+    description: "Compression shit collections",
+  },
+  {
+    name: "Shorts",
+    href: "/women/shorts",
+    bgImage: "/images/pc/1.jpg",
+    description: "Shorts Collection",
+  },
+  {
+    name: "Tank Tops",
+    href: "/women/tank-tops",
+    bgImage: "/images/pc/9.jpg",
+    description: "Tank Tops collection",
   },
 ];
 
 export const collections = [
-  {
-    imageUrl: "/images/pc/8.jpg",
-    title: "Men's",
-    description: "Mens collection for gym ultimate ggs",
-    slug: "Mens",
-  },
-  {
-    imageUrl: "/images/pc/9.jpg",
-    title: "Women's",
-    description: "Women collection for gym ultimate ggs",
-    slug: "Women",
-  },
   {
     imageUrl: "/images/pc/9.jpg",
     title: "T-Shirts",
@@ -102,3 +105,37 @@ export const generateKey = () => {
   }
   return key;
 };
+
+export const quotes = [
+  {
+    message:
+      "I hated every minute of training, but I said, ‘Don’t quit. Suffer now and live the rest of your life as a champion",
+    author: "Muhammad Ali",
+  },
+  {
+    message:
+      "We are what we repeatedly do. Excellence then is not an act but a habit",
+    author: "Aristotele",
+  },
+  {
+    message: "The body achieves what the mind believes",
+    author: "Napoleon Hill",
+  },
+  {
+    message:
+      "If you don’t find the time, if you don’t do the work, you don’t get the results",
+    author: "Arnold Schwarzenegger",
+  },
+  {
+    message: "The real workout starts when you want to stop",
+    author: "Ronnie Coleman",
+  },
+  {
+    message: "Do something today that your future self will thank you for",
+    author: "Sean Patrick",
+  },
+  {
+    message: "You must expect things of yourself before you can do them",
+    author: " Michael Jordan",
+  },
+];

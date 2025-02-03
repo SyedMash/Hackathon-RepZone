@@ -17,8 +17,12 @@
 }
 /* Style the entire scrollbar */
 ::-webkit-scrollbar {
-  width: 6px; /* Width of the vertical scrollbar */
+  width: 3px; /* Width of the vertical scrollbar */
   height: 12px; /* Height of the horizontal scrollbar */
+}
+
+.custom-heading {
+  transform: perspective(1000px) rotateX(45deg);
 }
 
 /* Style the track (background of the scrollbar) */
@@ -37,6 +41,10 @@
 /* Change the thumb on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555; /* Darker gray on hover */
+}
+
+.custom-class-footer {
+  clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0 100%);
 }
 
 @layer utilities {
