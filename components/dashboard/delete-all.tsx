@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import { Button } from "../ui/button";
 import { client } from "../../sanity/lib/client";
