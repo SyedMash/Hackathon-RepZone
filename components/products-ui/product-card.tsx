@@ -65,7 +65,7 @@ const ProductCard = ({
         onMouseEnter={handleChangeImageOnEnter}
         onMouseLeave={handleRevertImageOnLeave}
       >
-        <div className="overflow-hidden relative bg-gray-100 dark:bg-neutral-900 h-[400px] md:h-[300px] lg:h-[400px] 2xl:h-[600px]">
+        <div className="overflow-hidden relative bg-gray-100 dark:bg-neutral-900">
           {discountedPrice && (
             <div className="absolute top-2 left-2 bg-red-300 py-1 px-12 rounded-full">
               <p>Save ${discountedPrice}</p>

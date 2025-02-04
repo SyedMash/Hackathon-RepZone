@@ -4,8 +4,8 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <section className="h-[35vh] relative w-full border-t bg-black text-white custom-class-footer">
-      <div className="pt-40 px-6 md:px-10 fixed h-[35vh] w-full bottom-0 left-2/4 -translate-x-2/4 lg:px-20 container mx-auto">
+    <section className="h-fit lg:h-[500px] lg:relative w-full border-t bg-black text-white custom-class-footer">
+      <div className="pt-40 px-6 md:px-10 lg:fixed h-fit w-full bottom-0 lg:left-2/4 lg:-translate-x-2/4 lg:px-20 container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           <div className="lg:col-span-1">
             <h2 className="text-2xl font-bold mb-4">

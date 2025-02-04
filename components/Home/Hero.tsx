@@ -2,7 +2,6 @@
 import Slider from "@/components/Home/slider";
 import NewArrivals from "@/components/Home/new-arrivals";
 import Category from "@/components/Home/category";
-import MostLoved from "./most-loved";
 import Review from "./review";
 import HotSelling from "./hot-selling";
 import Male from "./male";

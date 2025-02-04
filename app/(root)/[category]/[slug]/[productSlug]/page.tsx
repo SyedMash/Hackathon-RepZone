@@ -7,6 +7,9 @@ import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import React from "react";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 30;
+
 interface Product {
   name: string;
   description: string;
@@ -73,7 +76,7 @@ const ProductPage = async ({
 
   return (
     <section className="min-h-screen container mx-auto px-2 xl:px-0">
-      <div className="mt-16 lg:mt-32 h-[50vh] w-full">
+      <div className="mt-16 lg:mt-32 h-fit w-full">
         <ProductSlide images={product.images || []} />
       </div>
       <Card className="w-full h-fit mt-6 rounded-xl flex flex-col lg:flex-row gap-3 border-none">

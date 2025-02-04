@@ -29,7 +29,7 @@ const NewArrivals = ({ products }: { products: ProductData[] }) => {
 
   return (
     <>
-      <div className="overflow-hidden px-2 mx-auto 2xl:max-w-[1800px]">
+      <div className="overflow-hidden px-2 mx-auto md:max-w-[750px] lg:max-w-[1000px] 2xl:max-w-[1800px]">
         <div className="flex justify-between items-end mt-12 mb-6">
           <h1 className="flex flex-col text-xl md:text-2xl lg:text-3xl">
             NEW ARRIVAL

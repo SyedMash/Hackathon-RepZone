@@ -1,13 +1,15 @@
 "use client";
 import Link from "next/link";
 import React, { useState } from "react";
+import Image from "next/image";
+import MobileNav from "./mob-nav";
+import ListItem from "./ListItems";
+
 import { AnimatePresence, motion } from "framer-motion";
 import { ModeToggle } from "./toggle-theme";
 import { CrossIcon, MenuIcon, ShoppingCart, User } from "lucide-react";
 import { Button } from "./ui/button";
 import { navLinksMen, navLinksWomen } from "@/constants";
-import { Card } from "./ui/card";
-import Image from "next/image";
 import { useShoppingCart } from "use-shopping-cart";
 import {
   DropdownMenu,
@@ -26,7 +28,6 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "./ui/navigation-menu";
-import ListItem from "./ListItems";
 
 const UserButton = () => {
   return (
@@ -54,6 +55,11 @@ const UserButton = () => {
 const Navbar = () => {
   const [navOpen, setNavOpen] = useState(false);
   const { cartCount } = useShoppingCart();
+
+  const handleNavMenu = () => {
+    setNavOpen(false);
+  };
+
   return (
     <>
       <motion.div
@@ -61,7 +67,7 @@ const Navbar = () => {
         initial={{ y: "-100%", opacity: "0" }}
         animate={{ y: "0%", opacity: "1" }}
       >
-        <div className="h-full container mx-auto flex items-center justify-between px-2">
+        <div className="h-full mx-auto md:max-w-[750px] lg:max-w-[1000px] 2xl:max-w-[1800px] flex items-center justify-between px-2">
           <Link href={"/"}>
             <Image
               src={"/images/pc/logowhite.png"}
@@ -71,7 +77,7 @@ const Navbar = () => {
               className="invert dark:invert-0"
             />
           </Link>
-
+          {/* bg-gradient-to-b from-muted/50 to-muted no-underline outline-none focus:shadow-md */}
           <nav className="hidden lg:flex gap-5 items-center">
             <NavigationMenu className="">
               <NavigationMenuList className="flex items-center gap-2">
@@ -82,11 +88,11 @@ const Navbar = () => {
                       <li className="row-span-3">
                         <NavigationMenuLink
                           asChild
-                          className="bg-[url(/images/banners/card.png)] bg-no-repeat bg-cover"
+                          className="bg-[url(/images/banners/NAV_BAR.png)] bg-no-repeat bg-cover"
                         >
                           <Link
-                            className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                            href="/products/Mens"
+                            className="flex h-full w-full select-none flex-col justify-end rounded-md p-6"
+                            href=""
                           ></Link>
                         </NavigationMenuLink>
                       </li>
@@ -109,11 +115,11 @@ const Navbar = () => {
                       <li className="row-span-3">
                         <NavigationMenuLink
                           asChild
-                          className="bg-[url(/images/banners/card.png)] bg-no-repeat bg-cover"
+                          className="bg-[url(/images/banners/NAV_BAR_WOMEN.png)] bg-no-repeat bg-cover"
                         >
                           <Link
-                            className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                            href="/products/Mens"
+                            className="flex h-full w-full select-none flex-col justify-end rounded-md p-6"
+                            href=""
                           ></Link>
                         </NavigationMenuLink>
                       </li>
@@ -131,13 +137,6 @@ const Navbar = () => {
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
-            {/* <ul className="flex items-center gap-5">
-              {navLinks.map((navLink, idx: number) => (
-                <Link href={navLink.href} key={idx}>
-                  <li className="text-white">{navLink.name}</li>
-                </Link>
-              ))}
-            </ul> */}
           </nav>
 
           <div className="flex items-center gap-2">
@@ -150,13 +149,14 @@ const Navbar = () => {
 
             <Button
               size={"icon"}
+              variant={"outline"}
               className="lg:hidden"
               onClick={() => setNavOpen(!navOpen)}
             >
               {navOpen ? (
                 <CrossIcon className="rotate-45 text-white"></CrossIcon>
               ) : (
-                <MenuIcon className=" text-white" />
+                <MenuIcon className="" />
               )}
             </Button>
           </div>
@@ -172,33 +172,12 @@ const Navbar = () => {
             transition={{ ease: "linear" }}
             exit={{ x: "100%" }}
           >
+            <CrossIcon
+              className="absolute rotate-45 top-14 right-5 cursor-pointer"
+              onClick={() => setNavOpen(false)}
+            />
             <div className="mt-32 flex flex-col gap-6">
-              {navLinksMen.map((navLink, idx: number) => (
-                <Link
-                  href={navLink.href}
-                  onClick={() => setNavOpen(false)}
-                  key={idx}
-                  className=""
-                >
-                  <Card className="relative h-20 overflow-hidden">
-                    <Image
-                      src={navLink.bgImage}
-                      alt={navLink.name}
-                      height={1000}
-                      width={1000}
-                      className="h-full w-full object-cover object-top absolute"
-                    />
-                    <div className="absolute p-5 bg-black/50 w-full h-full">
-                      <h1 className="text-xl font-semibold text-white">
-                        {navLink.name}
-                      </h1>
-                      <p className="text-muted-foreground">
-                        {navLink.description}
-                      </p>
-                    </div>
-                  </Card>
-                </Link>
-              ))}
+              <MobileNav onClickLink={handleNavMenu} />
             </div>
           </motion.div>
         )}

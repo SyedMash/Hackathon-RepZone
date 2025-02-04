@@ -1,19 +1,10 @@
 "use client";
-
 import React, { useState } from "react";
-
-//components imports
-import ProductCard from "@/components/products-ui/product-card";
-import { client } from "@/sanity/lib/client";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// Import Swiper styles
+import ProductCard from "@/components/products-ui/product-card";
 import "swiper/css";
 import "swiper/css/pagination";
-
-// import required modules
-import { Pagination } from "swiper/modules";
-
 interface ProductData {
   name: string;
   description: string;
@@ -29,7 +20,7 @@ const NewArrivals = ({ products }: { products: ProductData[] }) => {
 
   return (
     <>
-      <div className="overflow-hidden px-2 mx-auto 2xl:max-w-[1800px] mb-24">
+      <div className="overflow-hidden px-2 mx-auto md:max-w-[750px] lg:max-w-[1000px] 2xl:max-w-[1800px] mb-24">
         <div className="">
           <h1 className="text-center flex flex-col gap-2 text-xl md:text-2xl lg:text-3xl font-bold my-12 text-muted-foreground">
             HOT SELLING

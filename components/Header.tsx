@@ -5,7 +5,11 @@ const Header = () => {
   const [heading, setHeading] = useState("");
 
   useEffect(() => {
-    const headings = ["heading 1", "heading 2", "heading 3"];
+    const headings = [
+      "TESTING MODE",
+      "SOME LINKS MAY NOT WORK",
+      "NOT COMPLETED YET",
+    ];
     if (headings.length > 1) {
       let index = 0;
       setHeading(headings[index]);

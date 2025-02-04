@@ -1,12 +1,12 @@
 "use client";
 import React, { useState } from "react";
+
 import ProductCard from "../products-ui/product-card";
-import { client } from "@/sanity/lib/client";
-import { Button } from "../ui/button";
 import Link from "next/link";
+import CustomButton from "../custom-button/cb";
+
 import { Libre_Bodoni } from "next/font/google";
 import { Swiper, SwiperSlide } from "swiper/react";
-import CustomButton from "../custom-button/cb";
 
 const libre = Libre_Bodoni({
   style: "normal",
@@ -44,7 +44,7 @@ const Male = ({ products }: { products: ProductData[] }) => {
           </div>
         </div>
       </section>
-      <div className="overflow-hidden px-2 mx-auto 2xl:max-w-[1800px]">
+      <div className="overflow-hidden px-2 mx-auto md:max-w-[750px] lg:max-w-[1000px] 2xl:max-w-[1800px]">
         <Swiper
           slidesPerView={1}
           spaceBetween={10}

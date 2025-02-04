@@ -9,7 +9,7 @@ interface ErrorProps {
 
 const Error = ({ error, reset }: ErrorProps) => {
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center h-screen w-full">
       <p>{error}</p>
       <Button onClick={reset}>Try Again</Button>
     </div>

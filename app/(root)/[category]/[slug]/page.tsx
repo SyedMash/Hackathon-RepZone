@@ -3,6 +3,9 @@ import ProductCard from "@/components/products-ui/product-card";
 import { client } from "@/sanity/lib/client";
 import React from "react";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 30;
+
 interface Products {
   name: string;
   price: string;
