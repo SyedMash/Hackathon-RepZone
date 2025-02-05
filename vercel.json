@@ -1,8 +1,7 @@
 {
-    "functions": {
-      "api/stripe/route.ts": {
-        "runtime": "nodejs"
-      }
+  "functions": {
+    "api/stripe/route": {
+      "runtime": "nodejs18.x"
     }
   }
-  
+}
