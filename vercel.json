@@ -1,0 +1,8 @@
+{
+    "functions": {
+      "api/stripe/route.ts": {
+        "runtime": "nodejs"
+      }
+    }
+  }
+  
