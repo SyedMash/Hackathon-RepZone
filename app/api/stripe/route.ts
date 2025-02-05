@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   const rawBody = await req.text();
-  const signature = req.headers.get("Stripe-Signature");
+  const signature = req.headers.get("stripe-signature");
 
   let event;
 
@@ -26,6 +26,8 @@ export async function POST(req: NextRequest) {
       const session = event.data.object;
       const onlyIds = JSON.parse(session.metadata?.cartItemsId || "[]");
 
+      console.log(onlyIds);
+
       const orderData = {
         customer: {
           _ref: session.metadata?.userId,
@@ -42,6 +44,7 @@ export async function POST(req: NextRequest) {
 
       try {
         await client.create({ _type: "order", ...orderData });
+        console.log("Order created successfully!");
       } catch (error: any) {
         console.error("Failed to create order in Sanity:", error.message);
         return NextResponse.json(
@@ -50,14 +53,17 @@ export async function POST(req: NextRequest) {
         );
       }
 
+      //creating label with rateId
       try {
         const label = await ship.createLabelFromRate({
           rateId: session?.metadata?.rateId!,
         });
+        console.log(label);
         return NextResponse.json("success", { status: 200 });
-      } catch (error: any) {
+      } catch (error) {
         return NextResponse.json("[POST LABEL]", { status: 401 });
       }
+
     }
     default: {
       console.log(`Unhandled event type: ${event.type}`);
