@@ -4,9 +4,12 @@ import { stripe } from "@/lib/stripe";
 import { client } from "@/sanity/lib/client";
 import { NextRequest, NextResponse } from "next/server";
 
+export const config = { api: { bodyParser: false } };
+
 export async function POST(req: NextRequest) {
   const body = await req.text();
   const signature = req.headers.get("Stripe-Signature");
+
 
   console.log(body);
 
