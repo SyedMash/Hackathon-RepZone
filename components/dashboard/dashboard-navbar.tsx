@@ -77,16 +77,13 @@ const DashboardNavbar = () => {
       >
         <div className="h-full container mx-auto flex items-center justify-between px-2  bg-black/50 backdrop-blur-lg rounded-lg">
           <Link href={"/dashboard"}>
-            <h1 className="text-red-800 font-bold  text-xl md:text-2xl lg:text-3xl">
-              R
-              <span className="text-base tracking-normal uppercase text-white">
-                ep
-              </span>
-              Z
-              <span className="text-base tracking-normal uppercase text-white">
-                one
-              </span>
-            </h1>
+            <Image
+              src={"/images/pc/logowhite.png"}
+              alt="logo"
+              height={200}
+              width={200}
+              className="invert dark:invert-0"
+            />
           </Link>
 
           <nav className="hidden lg:block">

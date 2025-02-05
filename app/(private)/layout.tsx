@@ -24,14 +24,14 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
     return signOut({ redirectUrl: "/" });
   }
 
-  if (user.emailAddresses[0].emailAddress !== "mhthenoob18@gmail.com") {
+  if (user.emailAddresses[0].emailAddress !== "technologistpro7@gmail.com") {
     // console.log("Email address does not match");
     return signOut({ redirectUrl: "/" });
   }
 
   if (
     !user ||
-    user.emailAddresses[0].emailAddress !== "mhthenoob18@gmail.com"
+    user.emailAddresses[0].emailAddress !== "technologistpro7@gmail.com"
   ) {
     return signOut({ redirectUrl: "/" });
   }

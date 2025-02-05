@@ -28,8 +28,8 @@ export async function POST(req: NextRequest) {
       shipment: {
         customs: { contents: "sample", nonDelivery: "return_to_sender" },
         validateAddress: "validate_and_clean",
-        carrierId: "se-1553954",
-        serviceCode: "fedex_international_priority_express",
+        carrierId: "se-1553952",
+        serviceCode: "usps_priority_mail",
         shipTo: {
           name: data.name,
           addressLine1: data.addressLine1,
@@ -61,7 +61,7 @@ export async function POST(req: NextRequest) {
         shipDate: new Date(Date.now()),
       },
       rateOptions: {
-        carrierIds: ["se-1553954"],
+        carrierIds: ["se-1553952"],
       },
     });
     console.log(rates);

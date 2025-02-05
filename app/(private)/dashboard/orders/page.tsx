@@ -15,27 +15,27 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { client } from "@/sanity/lib/client";
 
-const tableData = [
-  {
-    customer: "Mashhood",
-    email: "mashrtx7@gmail.com",
-    type: "ggs",
-    status: "paid",
-    date: Date.now(),
-    amount: "$1234",
-  },
-  {
-    customer: "Hussain",
-    email: "pro@gmail.com",
-    type: "ggs",
-    status: "paid",
-    date: Date.now(),
-    amount: "$1500",
-  },
-];
+interface Order {
+  customerName: string;
+  status: string;
+  _createdAt: string;
+  totalPrice: number;
+}
 
-const OrdersPage = () => {
+const getOrderData = async () => {
+  const query = `*[_type == "order"]{
+  "customerName": customer->name,
+    status,
+    _createdAt,
+    totalPrice
+}`;
+  return client.fetch(query);
+};
+
+const OrdersPage = async () => {
+  const orders: Order[] = await getOrderData();
   return (
     <>
       <Card className="mt-24">
@@ -56,13 +56,15 @@ const OrdersPage = () => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {tableData.map((data, idx) => (
+              {orders.map((order, idx) => (
                 <TableRow key={idx}>
-                  <TableCell>{data.customer}</TableCell>
-                  <TableCell>{data.type}</TableCell>
-                  <TableCell>{data.status}</TableCell>
-                  <TableCell>{data.date}</TableCell>
-                  <TableCell className="text-right">{data.amount}</TableCell>
+                  <TableCell>{order.customerName}</TableCell>
+                  <TableCell>{"null"}</TableCell>
+                  <TableCell>{order.status}</TableCell>
+                  <TableCell>{order._createdAt}</TableCell>
+                  <TableCell className="text-right">
+                    ${order.totalPrice}
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>

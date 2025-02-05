@@ -89,7 +89,7 @@ const Cart = ({
   }, [cartCount]);
 
   return (
-    <div className="mt-24 space-y-6">
+    <div className="mt-12 space-y-6">
       <div>
         <h1 className="text-center">CART</h1>
         <p className="text-center">
@@ -187,7 +187,7 @@ const Cart = ({
             variant={"secondary"}
             className="w-full cursor-pointer"
             onClick={handleStripe}
-            disabled={disableCheckout}
+            // disabled={disableCheckout}
           >
             {loading ? (
               <Loader2 className="animate-spin" />
