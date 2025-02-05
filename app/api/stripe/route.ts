@@ -2,18 +2,19 @@ import { generateKey } from "@/constants";
 import { ship } from "@/lib/ship-engine";
 import { stripe } from "@/lib/stripe";
 import { client } from "@/sanity/lib/client";
-import { headers } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
+import Stripe from "stripe";
+import { Buffer } from "buffer";
 
 export async function POST(req: NextRequest) {
-  const rawBody = await req.text();
-  const signature = headers().get("Stripe-Signature");
+  const body = Buffer.from(await req.arrayBuffer());
+  const signature = req.headers.get("Stripe-Signature");
 
-  let event;
+  let event: Stripe.Event;
 
   try {
     event = stripe.webhooks.constructEvent(
-      rawBody,
+      body,
       signature as string,
       process.env.NEXT_STRIPE_SECRET_WEBHOOK as string
     );
