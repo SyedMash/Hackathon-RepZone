@@ -2,11 +2,12 @@ import { generateKey } from "@/constants";
 import { ship } from "@/lib/ship-engine";
 import { stripe } from "@/lib/stripe";
 import { client } from "@/sanity/lib/client";
+import { headers } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   const rawBody = await req.text();
-  const signature = req.headers.get("stripe-signature");
+  const signature = headers().get("Stripe-Signature");
 
   let event;
 
@@ -25,8 +26,6 @@ export async function POST(req: NextRequest) {
     case "checkout.session.completed": {
       const session = event.data.object;
       const onlyIds = JSON.parse(session.metadata?.cartItemsId || "[]");
-
-      console.log(onlyIds);
 
       const orderData = {
         customer: {
