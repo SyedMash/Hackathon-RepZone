@@ -5,10 +5,11 @@ import { client } from "@/sanity/lib/client";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
-  const body = await req.text(); // ✅ Read raw body
+  const body = await req.text();
   const signature = req.headers.get("Stripe-Signature");
 
-  console.log("🔹 Webhook request received:", body);
+
+  console.log(body);
 
   let event;
 
@@ -28,8 +29,7 @@ export async function POST(req: NextRequest) {
       const session = event.data.object;
       const onlyIds = JSON.parse(session.metadata?.cartItemsId || "[]");
 
-      console.log("✅ Session Data:", session);
-      console.log("✅ Cart Item IDs:", onlyIds);
+      console.log(onlyIds);
 
       const orderData = {
         customer: {
@@ -47,30 +47,31 @@ export async function POST(req: NextRequest) {
 
       try {
         await client.create({ _type: "order", ...orderData });
-        console.log("✅ Order created successfully!");
+        console.log("Order created successfully!");
       } catch (error: any) {
-        console.error("🚨 Failed to create order in Sanity:", error.message);
+        console.error("Failed to create order in Sanity:", error.message);
         return NextResponse.json(
           { error: "Failed to create order" },
           { status: 500 }
         );
       }
 
-      // ✅ Fix: Ensure this block executes fully
+      //creating label with rateId
       try {
         const label = await ship.createLabelFromRate({
           rateId: session?.metadata?.rateId!,
         });
-        console.log("✅ Shipping label created:", label);
+        console.log(label);
+        return NextResponse.json("success", { status: 200 });
       } catch (error) {
-        console.error("🚨 Failed to create label:", error);
+        return NextResponse.json("[POST LABEL]", { status: 401 });
       }
 
-      return NextResponse.json("success", { status: 200 });
+      break;
     }
-
-    default:
-      console.log(`⚠️ Unhandled event type: ${event.type}`);
+    default: {
+      console.log(`Unhandled event type: ${event.type}`);
+    }
   }
 
   return NextResponse.json({ received: true }, { status: 200 });
