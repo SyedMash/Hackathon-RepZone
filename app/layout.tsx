@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 import Smooth from "@/components/experience/Smooth";
@@ -39,6 +40,7 @@ export default function RootLayout({
               />
               <ShoppingCartProvider>
                 {children}
+                <Analytics />
                 <Toaster />
               </ShoppingCartProvider>
             </ClerkProvider>
