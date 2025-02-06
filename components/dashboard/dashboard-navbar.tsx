@@ -92,7 +92,9 @@ const DashboardNavbar = () => {
                 <Link href={navLink.href} key={idx}>
                   <li
                     className={cn(
-                      navLink.href === pathname ? "text-red-800" : "text-white"
+                      navLink.href === pathname
+                        ? "text-[#466e74]"
+                        : "text-white"
                     )}
                   >
                     {navLink.name}

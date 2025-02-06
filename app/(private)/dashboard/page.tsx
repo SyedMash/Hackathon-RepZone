@@ -1,3 +1,4 @@
+import Graph from "@/components/dashboard/graph";
 import {
   Card,
   CardContent,
@@ -16,6 +17,14 @@ import {
 } from "lucide-react";
 import React from "react";
 
+interface Order {
+  totalPrice: number;
+  _createdAt: Date;
+}
+
+export const dynamic = "force-dynamic";
+export const revalidate = 30;
+
 const getCustomerData = async () => {
   const query = `*[_type == "customer"]`;
   return client.fetch(query);
@@ -26,27 +35,69 @@ const getProductData = async () => {
   return client.fetch(query);
 };
 
+const getOrderData = async () => {
+  const query = `*[_type == "order"]{
+    _createdAt,
+    totalPrice
+  }`;
+  return client.fetch(query);
+};
+
 const Dashboard = async () => {
   const customers = await getCustomerData();
   const products = await getProductData();
+  const orders: Order[] = await getOrderData();
+
+  const calculateTotalRevenue = () => {
+    const total = orders.reduce((sum, order) => sum + order.totalPrice, 0);
+    return total;
+  };
+
+  const getChartData = async () => {
+    const graphData = [
+      { name: "jan", total: 0 },
+      { name: "feb", total: 0 },
+      { name: "mar", total: 0 },
+      { name: "apr", total: 0 },
+      { name: "may", total: 0 },
+      { name: "jun", total: 0 },
+      { name: "jul", total: 0 },
+      { name: "aug", total: 0 },
+      { name: "sep", total: 0 },
+      { name: "oct", total: 0 },
+      { name: "nov", total: 0 },
+      { name: "dec", total: 0 },
+    ];
+
+    const monthlyRevenue: { [key: number]: number } = {};
+    for (const order of orders) {
+      const month = new Date(order._createdAt).getMonth();
+      monthlyRevenue[month] = (monthlyRevenue[month] || 0) + order.totalPrice;
+    }
+
+    for (const month in monthlyRevenue) {
+      graphData[month].total += monthlyRevenue[month];
+    }
+    return graphData;
+  };
 
   const cardContent = [
     {
       title: "Total Revenue",
-      value: "$100",
+      value: `$${calculateTotalRevenue()}`,
       description: "Based on 100 Charges",
       icon: DollarSign,
     },
     {
       title: "Total Sales",
-      value: "+50",
-      description: "Total sales on RepZone",
+      value: orders.length,
+      description: "Total sales on ARC",
       icon: ShoppingBag,
     },
     {
       title: "Total Products",
       value: products.length,
-      description: "Total products live on RepZone",
+      description: "Total products live on ARC",
       icon: ShirtIcon,
     },
     {
@@ -63,7 +114,7 @@ const Dashboard = async () => {
           <Card key={idx} className="p-5">
             <div className="flex justify-between">
               <h1>{cc.title}</h1>
-              <cc.icon className="text-red-800" />
+              <cc.icon className="text-[#466e74]" />
             </div>
             <h1 className="text-3xl font-semibold">{cc.value}</h1>
             <p className="text-muted-foreground">{cc.description}</p>
@@ -77,9 +128,12 @@ const Dashboard = async () => {
               Transactions
             </CardTitle>
             <CardDescription className="text-muted-foreground">
-              Recent transactions on RepZone
+              Recent transactions on ARC
             </CardDescription>
           </CardHeader>
+          <CardContent>
+            <Graph data={await getChartData()} />
+          </CardContent>
         </Card>
 
         <Card className="">
@@ -88,7 +142,7 @@ const Dashboard = async () => {
               Recent Sales
             </CardTitle>
             <CardDescription className="text-muted-foreground">
-              Recent sales on RepZone
+              Recent sales on ARC
             </CardDescription>
             <CardContent className="flex flex-col gap-4 pt-2 px-0 ">
               <div className="flex items-center gap-4">

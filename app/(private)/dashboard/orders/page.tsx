@@ -24,6 +24,9 @@ interface Order {
   totalPrice: number;
 }
 
+export const dynamic = "force-dynamic";
+export const revalidate = 30;
+
 const getOrderData = async () => {
   const query = `*[_type == "order"]{
   "customerName": customer->name,
