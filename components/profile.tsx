@@ -16,6 +16,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
 import { client } from "@/sanity/lib/client";
 import { useRouter } from "next/navigation";
+import { SidebarTrigger } from "./ui/sidebar";
+import { AppSidebar } from "./app-sidebar";
 
 const shippingSchema = z.object({
   name: z.string(),
@@ -93,7 +95,7 @@ const ProfilePage = ({
   };
 
   return (
-    <div className="min-h-screen container mx-auto px-2 xl:px-0">
+    <div className="h-fit container mx-auto px-2 xl:px-0">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(handleSubmit)}

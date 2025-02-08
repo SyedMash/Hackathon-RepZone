@@ -30,8 +30,8 @@ export async function POST(req: NextRequest) {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       line_items: lineItems,
-      success_url: "http://localhost:3000/payment/success",
-      cancel_url: "http://localhost:3000/payment/cancel",
+      success_url: "https://hackathon-rep-zone.vercel.app/payment/success",
+      cancel_url: "https://hackathon-rep-zone.vercel.app/payment/cancel",
       metadata: {
         userId: userId,
         cartItemsId: JSON.stringify(onlyIds),
